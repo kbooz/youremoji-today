@@ -1,0 +1,17 @@
+[
+  {
+    "emoji": "😃",
+    "text": "it's a\nsmiley guy",
+    "color": "#ff9900"
+  },
+  {
+    "emoji": "😎",
+    "text": "it's a\ncool  guy!\ncowabunga!",
+    "color": "#ffff00"
+  },
+  {
+    "emoji": "🍔",
+    "text": "it's a\nhamburguer!\nyummy",
+    "color": "white"
+  }
+]
