@@ -5,7 +5,11 @@ import Rocket from "./Rocket"
 import { variants } from "./Title.animation"
 import { TitleButton, TitleContainer, TitleText } from "./Title.styles"
 
-function Title() {
+interface TitleInterface {
+	onClick: () => void
+}
+
+function Title({ onClick }: TitleInterface) {
 	const [isLaunched, setLaunched] = React.useState(false)
 	const [isShaking, setShaking] = React.useState(false)
 	const launchControl = useAnimation()
@@ -43,6 +47,7 @@ function Title() {
 		<TitleContainer>
 			<TitleText>
 				<TitleButton
+					key="titleButton"
 					type="button"
 					initial="enter"
 					animate="entered"
@@ -52,6 +57,7 @@ function Title() {
 					variants={variants}
 					onHoverStart={appear}
 					onHoverEnd={cancel}
+					onClick={onClick}
 					onTap={launch}
 					onTapCancel={cancel}
 					onTapStart={prepare}
