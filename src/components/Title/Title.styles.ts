@@ -17,7 +17,6 @@ export const TitleButton = styled(motion.button)`
 	background: transparent;
 	font-size: calc(${fluidText(48, 82, 360, 720)});
 	font-weight: 600;
-	letter-spacing: -7px;
 	text-align: center;
 	line-height: 0.85;
 	padding: 0;
