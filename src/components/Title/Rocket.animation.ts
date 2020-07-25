@@ -15,17 +15,22 @@ export const variant = {
 	},
 	appear: { opacity: 1, left: 0, bottom: 0, ...animationPaused },
 	prepare: {
+		opacity: 1,
+		left: 0,
+		bottom: 0,
 		animationPlayState: "running",
 		animationIterationCount: "infinite",
 	},
 	launch: {
 		...animationPaused,
+		bottom: "initial",
 		left: "initial",
 		right: 0,
 		top: -20,
 		opacity: 0,
 		transition: {
-			duration: 0.5,
+			duration: 0.2,
+			type: "tween",
 		},
 	},
 	cancel: {

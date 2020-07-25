@@ -6,27 +6,36 @@ import { variants } from "./Title.animation"
 import { TitleButton, TitleContainer, TitleText } from "./Title.styles"
 
 function Title() {
+	const [isLaunched, setLaunched] = React.useState(false)
 	const [isShaking, setShaking] = React.useState(false)
 	const launchControl = useAnimation()
 
-	const [appear, prepare, launch, cancel] = React.useMemo(
+	const [appear, prepare, cancel] = React.useMemo(
 		() => [
-			() => launchControl.start("appear"),
+			() => !isLaunched && launchControl.start("appear"),
 			async () => {
+				if (isLaunched) return
 				setShaking(true)
 				await launchControl.start("prepare")
 			},
 			async () => {
 				setShaking(false)
-				await launchControl.start("launch")
-				await launchControl.set("hidden")
-			},
-			async () => {
-				setShaking(false)
+				if (isLaunched) return
 				await launchControl.start("cancel")
 				await launchControl.set("hidden")
 			},
 		],
+		[isLaunched]
+	)
+
+	const launch = React.useMemo(
+		() => async () => {
+			setShaking(false)
+			setLaunched(true)
+			await launchControl.start("launch")
+			await launchControl.set("hidden")
+			setLaunched(false)
+		},
 		[]
 	)
 
