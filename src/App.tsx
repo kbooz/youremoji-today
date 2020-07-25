@@ -2,7 +2,7 @@ import * as React from "react"
 import { css, Global } from "@emotion/core"
 import styled from "@emotion/styled"
 
-import Emoji from "./Emoji"
+import Title from "./components/Title/Title"
 import emojis from "./emojis.json"
 import { CenterContainer } from "./styles"
 import { randomNumber } from "./utils"
@@ -25,13 +25,14 @@ export default function App() {
 			<Global
 				styles={css`
 					body {
-						background: ${emoji.color};
+						/* background: ${emoji.color}; */
 					}
 				`}
 			/>
 			<Container>
 				<div />
-				<Emoji {...emoji} />
+				{/* <Emoji {...emoji} /> */}
+				<Title />
 				<CenterContainer>
 					{emojis.map((item) => (
 						<div style={{ padding: "0 20px" }} onClick={() => setEmoji(item)}>
